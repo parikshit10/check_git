@@ -9,14 +9,19 @@ class App extends Component
     super();
     this.state = 
     {
-      api1: 'https://api.github.com/users/'
+      user1: []
     };
     this.handler = this.handler.bind(this);
   }
   handler = (changedVal) =>
   {
-    this.setState({api1: this.state.api1+changedVal})
-    // fetch('')
+    var api1 = 'https://api.github.com/users/' + changedVal;
+    console.log(api1)
+    fetch(api1)
+    .then(response => response.json())
+    .then(user => this.setState({user1: user}))
+
+    console.log(this.state.user1)
   }
   render()
   {
