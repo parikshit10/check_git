@@ -13,13 +13,18 @@ class App extends Component
     };
     this.handler = this.handler.bind(this);
   }
+  handler = (changedVal) =>
+  {
+    this.setState({api1: this.state.api1+changedVal})
+    // fetch('')
+  }
   render()
   {
     return (
       <div>
         <h1>Compare your Git profiles here!</h1>
         <SearchBox />
-        <Button />
+        <Button handler={this.handler}/>
       </div>
 
 
