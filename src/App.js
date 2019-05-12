@@ -35,7 +35,7 @@ class App extends Component
   {
     return (
       <div>
-        <h1 className="tc">Compare git profiles here!</h1>
+        <h1 className="tc tracked-mega">Compare git profiles here!</h1>
 
         <div className="flex">
           <div className="outline w-50 pa2 mr2 ">
