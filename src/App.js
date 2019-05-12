@@ -24,14 +24,19 @@ class App extends Component
   render()
   {
     return (
-      <div>
-        <h1>Compare your Git profiles here!</h1>
-        <SearchBox />
-        <Button handler={this.handler}/>
-        <ProfileCard user={this.state.user1}/>
+      <div className="cf">
+
+        <div className="w-50 bg-near-white tc">
+          <SearchBox />
+          <Button handler={this.handler}/>
+          <ProfileCard user={this.state.user1}/>
+        </div>
+        <div className="w-50 bg-near-white tc">
+          <SearchBox />
+          <Button handler={this.handler}/>
+          <ProfileCard user={this.state.user1}/>
+        </div>
       </div>
-
-
     );  
   }
   
