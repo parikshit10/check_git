@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SearchBox from './SearchBox'
-import Button from './Button'
-
+import SearchBox from './SearchBox';
+import Button from './Button';
+import ProfileCard from './ProfileCard';
 class App extends Component
 {
   constructor()
@@ -16,12 +16,10 @@ class App extends Component
   handler = (changedVal) =>
   {
     var api1 = 'https://api.github.com/users/' + changedVal;
-    console.log(api1)
     fetch(api1)
     .then(response => response.json())
     .then(user => this.setState({user1: user}))
 
-    console.log(this.state.user1)
   }
   render()
   {
@@ -30,6 +28,7 @@ class App extends Component
         <h1>Compare your Git profiles here!</h1>
         <SearchBox />
         <Button handler={this.handler}/>
+        <ProfileCard user={this.state.user1}/>
       </div>
 
 
