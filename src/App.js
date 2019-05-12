@@ -9,9 +9,11 @@ class App extends Component
     super();
     this.state = 
     {
-      user1: []
+      user1: [],
+      user2: []
     };
     this.handler = this.handler.bind(this);
+    this.handler2 = this.handler2.bind(this);
   }
   handler = (changedVal) =>
   {
@@ -21,20 +23,31 @@ class App extends Component
     .then(user => this.setState({user1: user}))
 
   }
+  handler2 = (changedVal) =>
+  {
+    var api2 = 'https://api.github.com/users/' + changedVal;
+    fetch(api2)
+    .then(response => response.json())
+    .then(user => this.setState({user2: user}))
+
+  }
   render()
   {
     return (
-      <div className="cf">
+      <div>
+        <h1 className="tc">Compare git profiles here!</h1>
 
-        <div className="w-50 bg-near-white tc">
-          <SearchBox />
-          <Button handler={this.handler}/>
-          <ProfileCard user={this.state.user1}/>
-        </div>
-        <div className="w-50 bg-near-white tc">
-          <SearchBox />
-          <Button handler={this.handler}/>
-          <ProfileCard user={this.state.user1}/>
+        <div className="flex">
+          <div className="outline w-50 pa2 mr2 ">
+            <SearchBox userNum={"1"} />
+            <Button handler={this.handler} userNum={"1"}/>
+            <ProfileCard user={this.state.user1}/>
+          </div>
+          <div className="outline w-50 pa2 mr2 ">
+            <SearchBox userNum={"2"} />
+            <Button handler={this.handler2} userNum={"2"}/>
+            <ProfileCard user={this.state.user2}/>
+          </div>
         </div>
       </div>
     );  
